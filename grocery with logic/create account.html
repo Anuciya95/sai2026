@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Account</title>
+
+  <!-- FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- ICON -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fff;
+    }
+
+    /* NAVBAR */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 48px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #2e8b00;
+      font-style: italic;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #111;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: #2e8b00;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .icon-btn {
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    .icon-btn:hover {
+      color: #2e8b00;
+    }
+
+    .nav-login {
+      color: #2e8b00;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    /* MAIN */
+    main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 85vh;
+      background: #f9fafb;
+    }
+
+    .card {
+      background: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin-bottom: 25px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      border-radius: 8px;
+      border: none;
+      background: #f3f4f6;
+      margin-bottom: 12px;
+      outline: none;
+    }
+
+    .error {
+      color: red;
+      font-size: 0.8rem;
+      margin-bottom: 10px;
+      display: none;
+    }
+
+    .success {
+      color: green;
+      font-size: 0.85rem;
+      margin-bottom: 15px;
+      display: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      background: #2e8b00;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background: #236b00;
+    }
+
+    .login-link {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+
+    .login-link a {
+      color: #2e8b00;
+      font-weight: 600;
+      text-decoration: none;
+      margin-left: 4px;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <a class="logo" href="home.html">Ind Traders</a>
+
+  <ul class="nav-links">
+    <li><a href="home.html">Home</a></li>
+    <li><a href="#">Shop</a></li>
+    <li><a href="#">Brand</a></li>
+    <li><a href="#">AboutUs</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <i class="fa-solid fa-cart-shopping icon-btn"></i>
+    <i class="fa-solid fa-user icon-btn"></i>
+    <a class="nav-login" href="login.html">Login</a>
+  </div>
+</nav>
+
+<!-- SIGNUP -->
+<main>
+  <div class="card">
+    <h2>Create Account</h2>
+    <p>Sign up to get started</p>
+
+    <input type="text" id="name" placeholder="Full Name">
+    <input type="email" id="email" placeholder="Email Address">
+    <input type="password" id="password" placeholder="Password">
+    <input type="password" id="confirm" placeholder="Confirm Password">
+
+    <div class="error" id="errorMsg"></div>
+    <div class="success" id="successMsg">Account created successfully!</div>
+
+    <button onclick="createAccount()">Create Account</button>
+
+    <div class="login-link">
+      Already have an account?
+      <a href="login.html">Login</a>
+    </div>
+  </div>
+</main>
+
+<script>
+  function createAccount() {
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const confirm = document.getElementById("confirm").value;
+
+    const error = document.getElementById("errorMsg");
+    const success = document.getElementById("successMsg");
+
+    error.style.display = "none";
+    success.style.display = "none";
+
+    if (name === "" || email === "" || password === "" || confirm === "") {
+      error.innerText = "Please fill all fields";
+      error.style.display = "block";
+    } 
+    else if (password !== confirm) {
+      error.innerText = "Passwords do not match";
+      error.style.display = "block";
+    } 
+    else {
+      success.style.display = "block";
+    }
+  }
+</script>
+
+</body>
+</html>
